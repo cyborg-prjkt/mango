@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainmenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/judul"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="MANGO"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/asesmenbentukhurufdasar"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="ASESMEN BENTUK HURUF DASAR"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_button"
+        android:drawableLeft="@drawable/ic_colorblock3"
+        app:layout_constraintTop_toBottomOf="@id/judul"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <Button
+        android:id="@+id/asesmenHuruf"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="ASESMEN HURUF"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_button"
+        android:drawableLeft="@drawable/ic_colorblock"
+        app:layout_constraintTop_toBottomOf="@id/asesmenbentukhurufdasar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/asesmenSukukata"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="ASESMEN SUKU KATA"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_button"
+        android:drawableLeft="@drawable/ic_colorblock1"
+        app:layout_constraintTop_toBottomOf="@id/asesmenHuruf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

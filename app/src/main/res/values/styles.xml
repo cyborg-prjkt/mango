@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TemanBaca.Fullscreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryVariant">#FFFFFF</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+        <item name="android:textColor">#000000</item>
+        <item name="colorAccent">#2196F3</item>
+        <item name="colorOnBackground">#000000</item>
+        <item name="android:colorBackground">#FFFFFF</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="btnRandom">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#1976D2</item>
+        <item name="android:background">@drawable/letter_box_border</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="LetterBox">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#1976D2</item>
+        <item name="android:background">@drawable/letter_box_border</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="CheckBoxStyle">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+</resources>
