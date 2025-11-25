@@ -58,4 +58,17 @@
         app:layout_constraintTop_toBottomOf="@id/asesmenHuruf"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/asesmenkata"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="ASESMEN SUKU KATA"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_button"
+        android:drawableLeft="@drawable/ic_colorblock2"
+        app:layout_constraintTop_toBottomOf="@id/asesmenSukukata"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,11 @@ class MainMenu : AppCompatActivity() {
             val asesmensukukata = Intent(this, AsesmenSukuKata::class.java)
             startActivity(asesmensukukata)
         }
+        val asesmenKata = findViewById<Button>(R.id.asesmenkata)
+        asesmenKata.setOnClickListener {
+            val asesmenkata = Intent(this, AsesmenKata::class.java)
+            startActivity(asesmenkata)
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
