@@ -26,8 +26,11 @@ class AsesmenBentukHurufDasar : AppCompatActivity() {
         btnAcak = findViewById(R.id.acak)
         btnKapital = findViewById(R.id.hurufKapital)
         btnKecil = findViewById(R.id.hurufKecil)
+        btnAcak = findViewById(R.id.acak)
 
-        tampilkanHurufAcak()
+        btnAcak.setOnClickListener {
+            tampilkanHurufAcak()
+        }
 
         btnKapital.tag = btnKapital.text.toString()
         btnKecil.tag = btnKecil.text.toString()
