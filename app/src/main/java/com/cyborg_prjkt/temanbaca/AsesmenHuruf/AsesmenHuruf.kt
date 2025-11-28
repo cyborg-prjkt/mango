@@ -46,6 +46,12 @@ class AsesmenHuruf : AppCompatActivity(){
             tampilkanKombinasi()
         }
 
+        button.forEach { idbtn ->
+            idbtn.setOnClickListener {
+                toggleCheck(idbtn)
+            }
+        }
+
         btnNext = findViewById(R.id.next)
         btnNext.setOnClickListener {
             val asesmenhuruf2 = Intent(this, AsesmenHuruf2::class.java)
@@ -69,6 +75,17 @@ class AsesmenHuruf : AppCompatActivity(){
             val LettertoAssign = selectedLetters[i]
             val buttonText = LettertoAssign.toString().toLowerCase()
             currentButton.text = buttonText
+        }
+    }
+    private fun toggleCheck(button: Button) {
+        val originalText = button.tag.toString() ?: button.text.toString()
+        val currentText = button.text.toString()
+        val checkMark = "✔"
+
+        if (currentText.contains(checkMark)) {
+            button.text = originalText
+        } else {
+            button.text = checkMark
         }
     }
 }
