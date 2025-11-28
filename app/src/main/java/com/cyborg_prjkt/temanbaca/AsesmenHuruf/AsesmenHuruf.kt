@@ -34,8 +34,6 @@ class AsesmenHuruf : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf)
 
-        tampilkanKombinasi()
-
         val foundButtons = mutableListOf<Button>()
         for (id in buttonIds){
             val buttonObject = findViewById<Button>(id)
@@ -59,6 +57,7 @@ class AsesmenHuruf : AppCompatActivity(){
             val asesmenhuruf2 = Intent(this, AsesmenHuruf2::class.java)
             startActivity(asesmenhuruf2)
         }
+        tampilkanKombinasi()
     }
     private fun tampilkanKombinasi() {
         val randomGenerator = Random()
