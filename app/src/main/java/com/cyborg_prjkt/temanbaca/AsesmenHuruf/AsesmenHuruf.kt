@@ -13,11 +13,19 @@ import java.util.Random
 
 
 @Suppress("DEPRECATION")
-class AsesmenHuruf : AppCompatActivity(){
+class AsesmenHuruf : AppCompatActivity() {
 
-    private val kombinasiList : Array<Char> = arrayOf(
-        'a','b','c','d','e','f','g','h','i','j','k','l','m',
-        'n','o','p','q','r','s','t','u','v','w','x','y','z'
+    private val kombinasiList: List<String> = listOf(
+        "b d p q b q",
+        "y m n w u n",
+        "i l t i l t",
+        "c e i a e o",
+        "a a o e a e",
+        "g q o c g q",
+        "s z c s z s",
+        "a c q o q c",
+        "t f i t l f",
+        "m w n u m w"
     )
     private val buttonIds = listOf(
         R.id.btn1,
@@ -26,16 +34,16 @@ class AsesmenHuruf : AppCompatActivity(){
         R.id.btn4,
         R.id.btn5
     )
-    private lateinit var button : List<Button>
-    private lateinit var btnRandom : Button
-    private lateinit var btnNext : Button
+    private lateinit var button: List<Button>
+    private lateinit var btnRandom: Button
+    private lateinit var btnNext: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf)
 
         val foundButtons = mutableListOf<Button>()
-        for (id in buttonIds){
+        for (id in buttonIds) {
             val buttonObject = findViewById<Button>(id)
             foundButtons.add(buttonObject)
         }
@@ -59,26 +67,29 @@ class AsesmenHuruf : AppCompatActivity(){
         }
         tampilkanKombinasi()
     }
+
     private fun tampilkanKombinasi() {
         val randomGenerator = Random()
-        val selectedLetters = mutableListOf<Char>()
-        while (selectedLetters.size < 5){
-            val alphabetSize = kombinasiList.size
-            val randomIndex = randomGenerator.nextInt(alphabetSize)
-            val randomLetter = kombinasiList[randomIndex]
-            if (!selectedLetters.contains(randomLetter)){
-                selectedLetters.add(randomLetter)
-            }
-        }
+        val randomIndex = randomGenerator.nextInt(kombinasiList.size)
+        val randomLetter = kombinasiList[randomIndex]
+        val setKarakter: List<Char> = randomLetter
+            .split(" ")
+            .filter { it.isNotBlank() }
+            .map { it.first() }
+
+        val numberForButton: List<Char> = setKarakter.take(6)
         val numberOFButtons = button.size
-        for (i in 0 until numberOFButtons){
-            val currentButton = button[i]
-            val LettertoAssign = selectedLetters[i]
-            val buttonText = LettertoAssign.toString().toLowerCase()
-            currentButton.tag = buttonText
-            currentButton.text = buttonText
+        if (numberForButton.size >= numberOFButtons) {
+            for (i in 0 until numberOFButtons) {
+                val currentButton = button[i]
+                val LettertoAssign = numberForButton[i]
+                val buttonText = LettertoAssign.toString().toLowerCase()
+                currentButton.tag = buttonText
+                currentButton.text = buttonText
+        }
         }
     }
+
     private fun toggleCheck(button: Button) {
         val originalText = button.tag.toString() ?: ""
         val currentText = button.text.toString()
