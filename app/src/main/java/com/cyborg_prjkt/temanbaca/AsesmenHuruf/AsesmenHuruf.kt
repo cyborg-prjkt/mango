@@ -74,11 +74,12 @@ class AsesmenHuruf : AppCompatActivity(){
             val currentButton = button[i]
             val LettertoAssign = selectedLetters[i]
             val buttonText = LettertoAssign.toString().toLowerCase()
+            currentButton.tag = buttonText
             currentButton.text = buttonText
         }
     }
     private fun toggleCheck(button: Button) {
-        val originalText = button.tag.toString() ?: button.text.toString()
+        val originalText = button.tag.toString() ?: ""
         val currentText = button.text.toString()
         val checkMark = "✔"
 
