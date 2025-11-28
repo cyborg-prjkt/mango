@@ -34,6 +34,8 @@ class AsesmenHuruf : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf)
 
+        tampilkanKombinasi()
+
         val foundButtons = mutableListOf<Button>()
         for (id in buttonIds){
             val buttonObject = findViewById<Button>(id)
