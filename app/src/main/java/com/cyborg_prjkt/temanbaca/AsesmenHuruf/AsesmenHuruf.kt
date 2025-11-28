@@ -48,10 +48,11 @@ class AsesmenHuruf : AppCompatActivity() {
     private lateinit var btnNext: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setFullscreenMode()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf)
+
+        setFullscreenMode()
 
         val foundButtons = mutableListOf<Button>()
         for (id in buttonIds) {
