@@ -60,40 +60,56 @@
         android:layout_marginTop="1dp"
         app:layout_constraintTop_toBottomOf="@id/barAtas"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/hurufKapital"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hurufContainer"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="A"
-        android:textColor="@color/black"
-        android:textSize="200dp"
-        android:gravity="center"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:backgroundTint="@color/white"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/hurufKecil"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="a"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
-        android:textSize="200dp"
-        android:gravity="center"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/hurufKapital"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hurufKapital"
+            android:layout_width="0dp"
+            android:layout_height="340dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:text="A"
+            android:textColor="@color/black"
+            android:textSize="200dp"
+            android:gravity="center"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:backgroundTint="@color/white"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/hurufKecil"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_weight="1"  />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hurufKecil"
+            android:layout_width="0dp"
+            android:layout_height="340dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="a"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:textSize="200dp"
+            android:gravity="center"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:backgroundTint="@color/white"
+
+            app:layout_constraintStart_toEndOf="@+id/hurufKapital"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="1"  />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/acak"
@@ -110,7 +126,7 @@
         app:strokeColor="@color/black"
         app:strokeWidth="1dp"
         app:cornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/hurufKecil"
+        app:layout_constraintTop_toBottomOf="@id/hurufContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

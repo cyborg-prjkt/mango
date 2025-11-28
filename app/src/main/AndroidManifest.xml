@@ -14,7 +14,7 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,27 +24,27 @@
         </activity>
         <activity
             android:name=".MainMenu"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true"/>
         <activity
             android:name=".AsesmenBentukHurufDasar"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true"/>
         <activity
             android:name=".AsesmenHuruf.AsesmenHuruf"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true"/>
         <activity
             android:name=".AsesmenHuruf.AsesmenHuruf2"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true"/>
         <activity
             android:name=".AsesmenSukuKata"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true"/>
         <activity
             android:name=".AsesmenKata"
-            android:theme="@style/Theme.TemanBaca.Fullscreen"
+            android:theme="@style/Theme.Mango"
             android:exported="true"/>
 
 
