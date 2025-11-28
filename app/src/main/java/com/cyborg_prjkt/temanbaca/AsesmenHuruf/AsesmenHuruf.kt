@@ -7,10 +7,9 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cyborg_prjkt.temanbaca.R
-import java.util.Random
-
 
 @Suppress("DEPRECATION")
 class AsesmenHuruf : AppCompatActivity() {
@@ -32,8 +31,12 @@ class AsesmenHuruf : AppCompatActivity() {
         R.id.btn2,
         R.id.btn3,
         R.id.btn4,
-        R.id.btn5
+        R.id.btn5,
+        R.id.btn6
     )
+    private var currentSetIndex: Int = 0
+    private var totalCorrectSets: Int = 0
+    private val totalSets: Int = kombinasiList.size
     private lateinit var button: List<Button>
     private lateinit var btnRandom: Button
     private lateinit var btnNext: Button
@@ -49,11 +52,6 @@ class AsesmenHuruf : AppCompatActivity() {
         }
         button = foundButtons
 
-        btnRandom = findViewById(R.id.random)
-        btnRandom.setOnClickListener {
-            tampilkanKombinasi()
-        }
-
         button.forEach { idbtn ->
             idbtn.setOnClickListener {
                 toggleCheck(idbtn)
@@ -62,43 +60,87 @@ class AsesmenHuruf : AppCompatActivity() {
 
         btnNext = findViewById(R.id.next)
         btnNext.setOnClickListener {
-            val asesmenhuruf2 = Intent(this, AsesmenHuruf2::class.java)
-            startActivity(asesmenhuruf2)
+            handleNextSet()
         }
         tampilkanKombinasi()
     }
 
     private fun tampilkanKombinasi() {
-        val randomGenerator = Random()
-        val randomIndex = randomGenerator.nextInt(kombinasiList.size)
-        val randomLetter = kombinasiList[randomIndex]
+        val randomLetter = kombinasiList[currentSetIndex]
         val setKarakter: List<Char> = randomLetter
             .split(" ")
             .filter { it.isNotBlank() }
             .map { it.first() }
 
-        val numberForButton: List<Char> = setKarakter.take(6)
+        val numberForButton: List<Char> = setKarakter.take(button.size)
+        resetButtonState()
+
         val numberOFButtons = button.size
         if (numberForButton.size >= numberOFButtons) {
             for (i in 0 until numberOFButtons) {
                 val currentButton = button[i]
                 val LettertoAssign = numberForButton[i]
-                val buttonText = LettertoAssign.toString().toLowerCase()
+                val buttonText = LettertoAssign.toString()
+
                 currentButton.tag = buttonText
                 currentButton.text = buttonText
+            }
         }
+    }
+
+    private fun handleNextSet() {
+        val isSetCorrect = checkCurrentSetScoreAssumption()
+        if (isSetCorrect) {
+            totalCorrectSets++
+            Toast.makeText(this, "Set ${currentSetIndex + 1}: BENAR (+1 Skor)", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Set ${currentSetIndex + 1}: SALAH", Toast.LENGTH_SHORT).show()
+        }
+
+        currentSetIndex++
+
+        if (currentSetIndex >= totalSets) {
+
+            val totalErrors = totalSets - totalCorrectSets
+
+            val asesmenhuruf2 = Intent(this, AsesmenHuruf2::class.java)
+            asesmenhuruf2.putExtra("SCORE_HURUF", totalErrors)
+
+            startActivity(asesmenhuruf2)
+            finish()
+
+        } else {
+            tampilkanKombinasi()
         }
     }
 
     private fun toggleCheck(button: Button) {
         val originalText = button.tag.toString() ?: ""
-        val currentText = button.text.toString()
         val checkMark = "✔"
 
-        if (currentText.contains(checkMark)) {
+        if (button.text.toString() == checkMark) {
             button.text = originalText
         } else {
             button.text = checkMark
         }
+    }
+
+    private fun resetButtonState() {
+        button.forEach { btn ->
+            btn.text = btn.tag?.toString() ?: ""
+            btn.isSelected = false
+        }
+    }
+
+    private fun checkCurrentSetScoreAssumption(): Boolean {
+        var correctCount = 0
+        val totalButtons = button.size
+
+        button.forEach { btn ->
+            if (btn.text.toString() == "✔") {
+                correctCount++
+            }
+        }
+        return correctCount == totalButtons
     }
 }
