@@ -44,18 +44,15 @@ class AsesmenHuruf : AppCompatActivity() {
     private val totalSets: Int = kombinasiList.size // Total 10 set
 
     // Variabel View
-    private lateinit var button: List<Button> // List objek 5 tombol
-    private lateinit var btnRandom: Button
+    private lateinit var button: List<Button>
     private lateinit var btnNext: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Terapkan mode Fullscreen (Menghilangkan System UI)
         setFullscreenMode()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf)
 
-        // 1. Inisialisasi List Button (menghubungkan ID ke objek Button)
         val foundButtons = mutableListOf<Button>()
         for (id in buttonIds) {
             val buttonObject = findViewById<Button>(id)
