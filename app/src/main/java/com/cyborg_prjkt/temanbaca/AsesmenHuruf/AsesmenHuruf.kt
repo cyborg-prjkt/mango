@@ -39,7 +39,7 @@ class AsesmenHuruf : AppCompatActivity() {
 
     // Variabel Pelacak Progress dan Skor
     private var currentSetIndex: Int = 0          // Index set yang sedang ditampilkan (0 hingga 9)
-    private var totalFalseAlarms: Int = 0         // Total skor kesalahan centang
+    private var totalCorectScore: Int = 0         // Total skor kesalahan centang
     private lateinit var currentTargetLetter: String // Huruf Target untuk set saat ini
     private val totalSets: Int = kombinasiList.size // Total 10 set
 
@@ -79,7 +79,14 @@ class AsesmenHuruf : AppCompatActivity() {
         val selectedSetString = kombinasiList[currentSetIndex]
 
         val targetCandidate = selectedSetString.trim().split(" ")
-        currentTargetLetter = targetCandidate[0]
+
+        if (targetCandidate.size > 2){
+            currentTargetLetter = targetCandidate[2]
+        }else{
+            currentTargetLetter = targetCandidate[0]
+        }
+
+        Toast.makeText(this, "Carilah huruf ${currentTargetLetter.toUpperCase()}", Toast.LENGTH_LONG).show()
 
         val setKarakter: List<Char> = targetCandidate
             .filter { it.isNotBlank() }
@@ -103,18 +110,18 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun handleNextSet() {
-        val falseAlarmsInSet = calculateSetScore()
+        val scoreInSet = calculateSetScore()
 
-        totalFalseAlarms += falseAlarmsInSet
+        totalCorectScore += scoreInSet
 
-        Toast.makeText(this, "Set ${currentSetIndex + 1}: Kesalahan $falseAlarmsInSet. Total Skor Kesalahan: $totalFalseAlarms", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Set ${currentSetIndex + 1}: Score Benar $scoreInSet. Total Score: $totalCorectScore", Toast.LENGTH_LONG).show()
 
         currentSetIndex++
 
         if (currentSetIndex >= totalSets) {
 
             val asesmenhuruf2 = Intent(this, AsesmenHuruf2::class.java)
-            asesmenhuruf2.putExtra("SCORE_HURUF_ERRORS", totalFalseAlarms)
+            asesmenhuruf2.putExtra("SCORE_HURUF_CORRECT", totalCorectScore)
 
             startActivity(asesmenhuruf2)
             finish()
@@ -125,7 +132,7 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun calculateSetScore(): Int {
-        var falseAlarms = 0
+        var correctCheck = 0
         val target = currentTargetLetter // Huruf target dari set saat ini
 
         button.forEach { btn ->
@@ -135,11 +142,11 @@ class AsesmenHuruf : AppCompatActivity() {
             if (isChecked) {
 
                 if (originalLetter != target) {
-                    falseAlarms++
+                    correctCheck++
                 }
             }
         }
-        return falseAlarms
+        return correctCheck
     }
 
     private fun toggleCheck(button: Button) {
