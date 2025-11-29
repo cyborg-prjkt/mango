@@ -110,6 +110,12 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun handleNextSet() {
+        val isAnswared = button.any { it.text.toString() == "✔"}
+        if (!isAnswared) {
+            Toast.makeText(this, "Jawaban masih kosong mohon centang terlebih dahulu", Toast.LENGTH_LONG).show()
+            return
+        }
+
         val scoreInSet = calculateSetScore()
 
         totalCorectScore += scoreInSet
