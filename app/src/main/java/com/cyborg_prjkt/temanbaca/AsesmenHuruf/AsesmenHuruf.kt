@@ -141,7 +141,7 @@ class AsesmenHuruf : AppCompatActivity() {
 
             if (isChecked) {
 
-                if (originalLetter != target) {
+                if (originalLetter == target) {
                     correctCheck++
                 }
             }
