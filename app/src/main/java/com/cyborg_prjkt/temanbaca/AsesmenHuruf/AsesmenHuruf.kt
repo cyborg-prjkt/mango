@@ -177,11 +177,7 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun updateScoreDisplay(latesSetScore: Int = 0){
-        val maxScore = 20
-        tvscore.text = "Score: $totalCorectScore/$maxScore"
-        if (latesSetScore > 0 || currentSetIndex > 0){
-            Toast.makeText(this, "Set ${currentSetIndex}: Score Benar: $latesSetScore", Toast.LENGTH_SHORT).show()
-        }
+        tvscore.text = "Score: $totalCorectScore"
     }
 
     private fun setFullscreenMode() {

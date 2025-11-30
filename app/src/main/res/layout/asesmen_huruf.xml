@@ -86,9 +86,8 @@
             android:id="@+id/txtscore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Score"
+            android:text="Score: "
             android:textSize="20dp"
-            android:textStyle="bold"
             android:layout_marginEnd="16dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,14 +97,11 @@
             android:id="@+id/txtsoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="soal"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:text="Carilah huruf ..."
+            android:textSize="20dp"
+            android:layout_marginStart="30dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
