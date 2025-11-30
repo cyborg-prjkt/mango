@@ -7,6 +7,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cyborg_prjkt.temanbaca.R
@@ -14,7 +15,6 @@ import com.cyborg_prjkt.temanbaca.R
 @Suppress("DEPRECATION")
 class AsesmenHuruf : AppCompatActivity() {
 
-    // Daftar 10 set huruf asesmen yang spesifik
     private val kombinasiList: List<String> = listOf(
         "b d p q b q",
         "y m n w u n",
@@ -28,7 +28,6 @@ class AsesmenHuruf : AppCompatActivity() {
         "m w n u m w"
     )
 
-    // ID 5 tombol asesmen di layout
     private val buttonIds = listOf(
         R.id.btn1,
         R.id.btn2,
@@ -37,20 +36,23 @@ class AsesmenHuruf : AppCompatActivity() {
         R.id.btn5
     )
 
-    // Variabel Pelacak Progress dan Skor
-    private var currentSetIndex: Int = 0          // Index set yang sedang ditampilkan (0 hingga 9)
-    private var totalCorectScore: Int = 0         // Total skor kesalahan centang
-    private lateinit var currentTargetLetter: String // Huruf Target untuk set saat ini
-    private val totalSets: Int = kombinasiList.size // Total 10 set
+    private var currentSetIndex: Int = 0
+    private var totalCorectScore: Int = 0
+    private lateinit var currentTargetLetter: String
+    private val totalSets: Int = kombinasiList.size
 
-    // Variabel View
     private lateinit var button: List<Button>
     private lateinit var btnNext: Button
+    private lateinit var tvsoal: TextView
+    private lateinit var tvscore: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf)
+
+        tvscore = findViewById(R.id.txtscore)
+        tvsoal = findViewById(R.id.txtsoal)
 
         setFullscreenMode()
 
@@ -86,7 +88,7 @@ class AsesmenHuruf : AppCompatActivity() {
             currentTargetLetter = targetCandidate[0]
         }
 
-        Toast.makeText(this, "Carilah huruf ${currentTargetLetter.toUpperCase()}", Toast.LENGTH_LONG).show()
+        tvsoal.text = "Carilah huruf ${currentTargetLetter.toUpperCase()}"
 
         val setKarakter: List<Char> = targetCandidate
             .filter { it.isNotBlank() }
@@ -120,7 +122,7 @@ class AsesmenHuruf : AppCompatActivity() {
 
         totalCorectScore += scoreInSet
 
-        Toast.makeText(this, "Set ${currentSetIndex + 1}: Score Benar $scoreInSet. Total Score: $totalCorectScore", Toast.LENGTH_LONG).show()
+        updateScoreDisplay(scoreInSet)
 
         currentSetIndex++
 
@@ -134,12 +136,13 @@ class AsesmenHuruf : AppCompatActivity() {
 
         } else {
             tampilkanKombinasi()
+            updateScoreDisplay()
         }
     }
 
     private fun calculateSetScore(): Int {
         var correctCheck = 0
-        val target = currentTargetLetter // Huruf target dari set saat ini
+        val target = currentTargetLetter
 
         button.forEach { btn ->
             val originalLetter = btn.tag?.toString() ?: ""
@@ -170,6 +173,14 @@ class AsesmenHuruf : AppCompatActivity() {
         button.forEach { btn ->
             btn.text = btn.tag?.toString() ?: ""
             btn.isSelected = false
+        }
+    }
+
+    private fun updateScoreDisplay(latesSetScore: Int = 0){
+        val maxScore = 20
+        tvscore.text = "Score: $totalCorectScore/$maxScore"
+        if (latesSetScore > 0 || currentSetIndex > 0){
+            Toast.makeText(this, "Set ${currentSetIndex}: Score Benar: $latesSetScore", Toast.LENGTH_SHORT).show()
         }
     }
 
