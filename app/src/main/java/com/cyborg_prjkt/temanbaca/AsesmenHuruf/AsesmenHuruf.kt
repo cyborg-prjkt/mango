@@ -88,7 +88,7 @@ class AsesmenHuruf : AppCompatActivity() {
             currentTargetLetter = targetCandidate[0]
         }
 
-        tvsoal.text = "Carilah huruf ${currentTargetLetter.toUpperCase()}"
+        tvsoal.text = "Carilah huruf ${currentTargetLetter.toLowerCase()}"
 
         val setKarakter: List<Char> = targetCandidate
             .filter { it.isNotBlank() }
