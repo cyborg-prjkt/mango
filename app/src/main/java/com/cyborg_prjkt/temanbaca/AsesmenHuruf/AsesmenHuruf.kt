@@ -43,7 +43,6 @@ class AsesmenHuruf : AppCompatActivity() {
 
     private lateinit var button: List<Button>
     private lateinit var btnNext: Button
-    private lateinit var tvsoal: TextView
     private lateinit var tvscore: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +51,6 @@ class AsesmenHuruf : AppCompatActivity() {
         setContentView(R.layout.asesmen_huruf)
 
         tvscore = findViewById(R.id.txtscore)
-        tvsoal = findViewById(R.id.txtsoal)
 
         setFullscreenMode()
 
@@ -87,8 +85,6 @@ class AsesmenHuruf : AppCompatActivity() {
         }else{
             currentTargetLetter = targetCandidate[0]
         }
-
-        tvsoal.text = "Carilah huruf ${currentTargetLetter.toLowerCase()}"
 
         val setKarakter: List<Char> = targetCandidate
             .filter { it.isNotBlank() }
@@ -144,7 +140,6 @@ class AsesmenHuruf : AppCompatActivity() {
         var checkCount = 0
 
         button.forEach { btn ->
-            val originalLetter = btn.tag?.toString() ?: ""
             val isChecked = btn.text.toString() == "✔"
 
             if (isChecked) {
