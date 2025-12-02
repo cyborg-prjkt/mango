@@ -109,182 +109,126 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <!-- Huruf C dan L -->
+    <!-- Pilihan 1 (tv1) dan 2 (tv2) -->
     <TextView
-        android:id="@+id/tvC"
+        android:id="@+id/tv1"
         style="@style/LetterBox"
-        android:text="C"
+        android:text="1"
         app:layout_constraintTop_toBottomOf="@id/score_and_question_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cbC"
+        app:layout_constraintEnd_toStartOf="@id/cb1"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginTop="32dp"/>
 
     <CheckBox
-        android:id="@+id/cbC"
+        android:id="@+id/cb1"
         style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvC"
-        app:layout_constraintStart_toEndOf="@id/tvC"
-        app:layout_constraintEnd_toStartOf="@id/tvL"
+        app:layout_constraintTop_toTopOf="@id/tv1"
+        app:layout_constraintStart_toEndOf="@id/tv1"
+        app:layout_constraintEnd_toStartOf="@id/tv2"
         android:layout_marginStart="8dp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 
     <TextView
-        android:id="@+id/tvL"
+        android:id="@+id/tv2"
         style="@style/LetterBox"
-        android:text="L"
-        app:layout_constraintTop_toTopOf="@id/tvC"
-        app:layout_constraintStart_toEndOf="@id/cbC"
-        app:layout_constraintEnd_toStartOf="@id/cbL"
+        android:text="2"
+        app:layout_constraintTop_toTopOf="@id/tv1"
+        app:layout_constraintStart_toEndOf="@id/cb1"
+        app:layout_constraintEnd_toStartOf="@id/cb2"
         android:layout_marginStart="32dp"/>
 
     <CheckBox
-        android:id="@+id/cbL"
+        android:id="@+id/cb2"
         style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvL"
-        app:layout_constraintStart_toEndOf="@id/tvL"
+        app:layout_constraintTop_toTopOf="@id/tv2"
+        app:layout_constraintStart_toEndOf="@id/tv2"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 
-    <!-- Huruf X dan Z -->
+    <!-- Pilihan 3 (tv3) dan 4 (tv4) -->
     <TextView
-        android:id="@+id/tvX"
+        android:id="@+id/tv3"
         style="@style/LetterBox"
-        android:text="X"
-        app:layout_constraintTop_toBottomOf="@id/tvC"
+        android:text="3"
+        app:layout_constraintTop_toBottomOf="@id/tv1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cbX"
+        app:layout_constraintEnd_toStartOf="@id/cb3"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginTop="16dp"/>
 
     <CheckBox
-        android:id="@+id/cbX"
+        android:id="@+id/cb3"
         style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvX"
-        app:layout_constraintStart_toEndOf="@id/tvX"
-        app:layout_constraintEnd_toStartOf="@id/tvZ"
+        app:layout_constraintTop_toTopOf="@id/tv3"
+        app:layout_constraintStart_toEndOf="@id/tv3"
+        app:layout_constraintEnd_toStartOf="@id/tv4"
         android:layout_marginStart="8dp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 
     <TextView
-        android:id="@+id/tvZ"
+        android:id="@+id/tv4"
         style="@style/LetterBox"
-        android:text="Z"
-        app:layout_constraintTop_toTopOf="@id/tvX"
-        app:layout_constraintStart_toEndOf="@id/cbX"
-        app:layout_constraintEnd_toStartOf="@id/cbZ"
+        android:text="4"
+        app:layout_constraintTop_toTopOf="@id/tv3"
+        app:layout_constraintStart_toEndOf="@id/cb3"
+        app:layout_constraintEnd_toStartOf="@id/cb4"
         android:layout_marginStart="32dp"/>
 
     <CheckBox
-        android:id="@+id/cbZ"
+        android:id="@+id/cb4"
         style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvZ"
-        app:layout_constraintStart_toEndOf="@id/tvZ"
+        app:layout_constraintTop_toTopOf="@id/tv4"
+        app:layout_constraintStart_toEndOf="@id/tv4"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 
-    <!-- Huruf Q dan F -->
+    <!-- Pilihan 5 (tv5) dan 6 (tv6) -->
     <TextView
-        android:id="@+id/tvQ"
+        android:id="@+id/tv5"
         style="@style/LetterBox"
-        android:text="Q"
-        app:layout_constraintTop_toBottomOf="@id/tvX"
+        android:text="5"
+        app:layout_constraintTop_toBottomOf="@id/tv3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cbQ"
+        app:layout_constraintEnd_toStartOf="@id/cb5"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginTop="16dp"/>
 
     <CheckBox
-        android:id="@+id/cbQ"
+        android:id="@+id/cb5"
         style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvQ"
-        app:layout_constraintStart_toEndOf="@id/tvQ"
-        app:layout_constraintEnd_toStartOf="@id/tvF"
+        app:layout_constraintTop_toTopOf="@id/tv5"
+        app:layout_constraintStart_toEndOf="@id/tv5"
+        app:layout_constraintEnd_toStartOf="@id/tv6"
         android:layout_marginStart="8dp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 
     <TextView
-        android:id="@+id/tvF"
+        android:id="@+id/tv6"
         style="@style/LetterBox"
-        android:text="F"
-        app:layout_constraintTop_toTopOf="@id/tvQ"
-        app:layout_constraintStart_toEndOf="@id/cbQ"
-        app:layout_constraintEnd_toStartOf="@id/cbF"
+        android:text="6"
+        app:layout_constraintTop_toTopOf="@id/tv5"
+        app:layout_constraintStart_toEndOf="@id/cb5"
+        app:layout_constraintEnd_toStartOf="@id/cb6"
         android:layout_marginStart="32dp"/>
 
     <CheckBox
-        android:id="@+id/cbF"
+        android:id="@+id/cb6"
         style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvF"
-        app:layout_constraintStart_toEndOf="@id/tvF"
+        app:layout_constraintTop_toTopOf="@id/tv6"
+        app:layout_constraintStart_toEndOf="@id/tv6"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 
-    <!-- Huruf Y (Baris Tunggal) -->
-    <TextView
-        android:id="@+id/tvY"
-        style="@style/LetterBox"
-        android:text="Y"
-        app:layout_constraintTop_toBottomOf="@id/tvQ"
-        android:layout_marginTop="16dp"
-
-        app:layout_constraintStart_toStartOf="@id/tvQ"
-        app:layout_constraintEnd_toStartOf="@id/cbY"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
-
-    <CheckBox
-        android:id="@+id/cbY"
-        style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvY"
-        app:layout_constraintStart_toEndOf="@id/tvY"
-        app:layout_constraintEnd_toEndOf="@id/cbQ"
-        android:layout_marginStart="8dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"/>
-
-    <!-- Huruf N (Baris Tunggal) -->
-    <TextView
-        android:id="@+id/tvN"
-        style="@style/LetterBox"
-        android:text="N"
-        app:layout_constraintTop_toBottomOf="@id/tvF"
-        app:layout_constraintStart_toStartOf="@id/tvF"
-        app:layout_constraintEnd_toStartOf="@id/cbN"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        android:layout_marginTop="16dp"/>
-
-    <CheckBox
-        android:id="@+id/cbN"
-        style="@style/CheckBoxStyle"
-        app:layout_constraintTop_toTopOf="@id/tvN"
-        app:layout_constraintStart_toEndOf="@id/tvN"
-        app:layout_constraintEnd_toEndOf="@id/cbF"
-        android:layout_marginStart="8dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintHorizontal_bias="0.0"/>
-
-    <Button
-        android:id="@+id/acak"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="ACAK"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:background="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/tvN"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
 
     <Button
         android:id="@+id/next"
@@ -294,7 +238,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:background="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/acak"
+        app:layout_constraintTop_toBottomOf="@id/cb6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"/>

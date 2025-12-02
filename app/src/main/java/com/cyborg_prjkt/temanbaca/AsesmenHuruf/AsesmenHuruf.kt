@@ -1,15 +1,25 @@
 package com.cyborg_prjkt.temanbaca.AsesmenHuruf
 
 import android.content.Intent
+
 import android.os.Build
+
 import android.os.Bundle
+
 import android.view.View
+
 import android.view.WindowInsets
+
 import android.view.WindowInsetsController
+
 import android.widget.Button
+
 import android.widget.TextView
+
 import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
+
 import com.cyborg_prjkt.temanbaca.R
 
 @Suppress("DEPRECATION")
@@ -43,6 +53,7 @@ class AsesmenHuruf : AppCompatActivity() {
 
     private lateinit var button: List<Button>
     private lateinit var btnNext: Button
+    private lateinit var tvsoal: TextView
     private lateinit var tvscore: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +62,7 @@ class AsesmenHuruf : AppCompatActivity() {
         setContentView(R.layout.asesmen_huruf)
 
         tvscore = findViewById(R.id.txtscore)
+        tvsoal = findViewById(R.id.txtsoal)
 
         setFullscreenMode()
 
@@ -59,25 +71,26 @@ class AsesmenHuruf : AppCompatActivity() {
             val buttonObject = findViewById<Button>(id)
             foundButtons.add(buttonObject)
         }
-        button = foundButtons
 
+        button = foundButtons
         button.forEach { idbtn ->
+
             idbtn.setOnClickListener {
                 toggleCheck(idbtn)
             }
+
         }
 
         btnNext = findViewById(R.id.next)
         btnNext.setOnClickListener {
             handleNextSet()
         }
-
         tampilkanKombinasi()
+
     }
 
     private fun tampilkanKombinasi() {
         val selectedSetString = kombinasiList[currentSetIndex]
-
         val targetCandidate = selectedSetString.trim().split(" ")
 
         if (targetCandidate.size > 2){
@@ -86,12 +99,12 @@ class AsesmenHuruf : AppCompatActivity() {
             currentTargetLetter = targetCandidate[0]
         }
 
+        tvsoal.text = "Carilah huruf ${currentTargetLetter.toLowerCase()}"
         val setKarakter: List<Char> = targetCandidate
             .filter { it.isNotBlank() }
             .map { it.first() }
 
         val hurufUntukTombol: List<Char> = setKarakter.take(button.size)
-
         resetButtonState()
 
         val numberOFButtons = button.size
@@ -115,11 +128,8 @@ class AsesmenHuruf : AppCompatActivity() {
         }
 
         val scoreInSet = calculateSetScore()
-
         totalCorectScore += scoreInSet
-
         updateScoreDisplay(scoreInSet)
-
         currentSetIndex++
 
         if (currentSetIndex >= totalSets) {
@@ -129,7 +139,6 @@ class AsesmenHuruf : AppCompatActivity() {
 
             startActivity(asesmenhuruf2)
             finish()
-
         } else {
             tampilkanKombinasi()
             updateScoreDisplay()
@@ -137,22 +146,23 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun calculateSetScore(): Int {
-        var checkCount = 0
+        var correctCheck = 0
+        val target = currentTargetLetter
 
         button.forEach { btn ->
+            val originalLetter = btn.tag?.toString() ?: ""
             val isChecked = btn.text.toString() == "✔"
-
             if (isChecked) {
-
-                if (isChecked) {
-                    checkCount++
+                if (originalLetter == target) {
+                    correctCheck++
                 }
             }
         }
-        return checkCount
+        return correctCheck
     }
 
     private fun toggleCheck(button: Button) {
+
         val originalText = button.tag?.toString() ?: ""
         val checkMark = "✔"
 
@@ -164,6 +174,7 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun resetButtonState() {
+
         button.forEach { btn ->
             btn.text = btn.tag?.toString() ?: ""
             btn.isSelected = false
