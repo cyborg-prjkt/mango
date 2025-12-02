@@ -141,8 +141,7 @@ class AsesmenHuruf : AppCompatActivity() {
     }
 
     private fun calculateSetScore(): Int {
-        var correctCheck = 0
-        val target = currentTargetLetter
+        var checkCount = 0
 
         button.forEach { btn ->
             val originalLetter = btn.tag?.toString() ?: ""
@@ -150,12 +149,12 @@ class AsesmenHuruf : AppCompatActivity() {
 
             if (isChecked) {
 
-                if (originalLetter == target) {
-                    correctCheck++
+                if (isChecked) {
+                    checkCount++
                 }
             }
         }
-        return correctCheck
+        return checkCount
     }
 
     private fun toggleCheck(button: Button) {
