@@ -15,17 +15,17 @@ import com.cyborg_prjkt.temanbaca.R
 @Suppress("DEPRECATION")
 class AsesmenHuruf2 : AppCompatActivity() {
 
-    private val kombinasiList: List<String> = listOf(
-        "b d p q b q",
-        "y m n w u n",
-        "i l t i l t",
-        "c e i a e o",
-        "a a o e a e",
-        "g q o c g q",
-        "s z c s z s",
-        "a c q o q c",
-        "t f i t l f",
-        "m w n u m w"
+    private val soalList: List<Pair<String, String>> = listOf(
+        Pair("p d b q p d", "p"),
+        Pair("p q b d q p", "q"),
+        Pair("w m u n w m", "u"),
+        Pair("a e o e o a", "e"),
+        Pair("i l t i i t l", "i"),
+        Pair("m u n w w m", "w"),
+        Pair("e o u e o n", "n"),
+        Pair("p b b d b p", "b"),
+        Pair("t i t t l i", "t"),
+        Pair("o o e e o a", "a")
     )
 
     private val letterTextViewIds = listOf(
@@ -40,7 +40,7 @@ class AsesmenHuruf2 : AppCompatActivity() {
     private var currentSetIndex: Int = 0
     private var totalCorectScore: Int = 0
     private lateinit var currentTargetLetter: String
-    private val totalSets: Int = kombinasiList.size
+    private val totalSets: Int = soalList.size
 
     private lateinit var letterTextViews: List<TextView>
     private lateinit var btnNext: Button
@@ -85,14 +85,14 @@ class AsesmenHuruf2 : AppCompatActivity() {
     private fun tampilkanKombinasi() {
         if (currentSetIndex >= totalSets) return
 
-        val selectedSetString = kombinasiList[currentSetIndex]
-        val targetCandidate = selectedSetString.trim().split(" ")
+        val (kombinasiString, targetLetter) = soalList[currentSetIndex]
 
-        currentTargetLetter = targetCandidate.firstOrNull() ?: ""
+        currentTargetLetter = targetLetter.toLowerCase()
 
-        tvsoal.text = "Carilah huruf ${currentTargetLetter.toLowerCase()}"
+        tvsoal.text = "Carilah huruf ${currentTargetLetter.toUpperCase()}"
 
-        val setKarakter: List<Char> = targetCandidate
+        val setKarakter: List<Char> = kombinasiString.trim()
+            .split(" ")
             .filter { it.isNotBlank() }
             .map { it.first() }
 
@@ -148,11 +148,16 @@ class AsesmenHuruf2 : AppCompatActivity() {
             if (isChecked) {
                 if (originalLetter == target) {
                     correctCheck++
+                } else {
+                    correctCheck--
+                }
+            } else {
+                if (originalLetter == target) {
                 }
             }
         }
 
-        return correctCheck
+        return maxOf(0, correctCheck)
     }
 
     private fun toggleCheck(textView: TextView) {
