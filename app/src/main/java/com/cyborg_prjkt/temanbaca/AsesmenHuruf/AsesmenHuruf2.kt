@@ -51,7 +51,10 @@ class AsesmenHuruf2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.asesmen_huruf2)
 
-        totalCorectScore = intent.getIntExtra("SCORE_HURUF_CORRECT", 0)
+        // START PERBAIKAN 2: SKOR MANDIRI (Tidak mengambil skor dari intent)
+        // totalCorectScore = intent.getIntExtra("SCORE_HURUF_CORRECT", 0) // Baris ini dihapus/dinonaktifkan
+        totalCorectScore = 0 // Skor dimulai dari 0 untuk Asesmen Huruf 2
+        // END PERBAIKAN 2
 
         tvscore = findViewById(R.id.txtscore)
         tvsoal = findViewById(R.id.txtsoal)
@@ -89,7 +92,7 @@ class AsesmenHuruf2 : AppCompatActivity() {
 
         currentTargetLetter = targetLetter.toLowerCase()
 
-        tvsoal.text = "Carilah huruf ${currentTargetLetter.toUpperCase()}"
+        tvsoal.text = "Carilah huruf ${currentTargetLetter.toLowerCase()}"
 
         val setKarakter: List<Char> = kombinasiString.trim()
             .split(" ")
@@ -111,11 +114,16 @@ class AsesmenHuruf2 : AppCompatActivity() {
     }
 
     private fun handleNextSet() {
-        val isAnswered = letterTextViews.any { it.text.toString() == "✔" }
+        // START PERBAIKAN 1: Cek Jawaban Kosong
+        // Cek apakah ada satupun TextView yang teksnya adalah "✔" (telah dicentang)
+        val checkMark = "✔"
+        val isAnswered = letterTextViews.any { it.text.toString() == checkMark }
+
         if (!isAnswered) {
             Toast.makeText(this, "Jawaban masih kosong, mohon centang terlebih dahulu", Toast.LENGTH_LONG).show()
             return
         }
+        // END PERBAIKAN 1
 
         val scoreInSet = calculateSetScore()
         totalCorectScore += scoreInSet
@@ -124,13 +132,16 @@ class AsesmenHuruf2 : AppCompatActivity() {
         currentSetIndex++
 
         if (currentSetIndex >= totalSets) {
+            // START PERBAIKAN 2: Kirim skor Asesmen Huruf 2 secara terpisah
             val intentResult = Intent(this, AsesmenHuruf::class.java).apply {
-                putExtra("FINAL_SCORE_HURUF", totalCorectScore)
+                // Mengganti nama ekstra untuk skor agar jelas ini skor dari Slide 2
+                putExtra("SCORE_HURUF2_FINAL", totalCorectScore)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             }
             startActivity(intentResult)
             finish()
-            Toast.makeText(this, "Asesmen Huruf Selesai. Skor Total: $totalCorectScore", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Asesmen Huruf 2 Selesai. Skor Total: $totalCorectScore", Toast.LENGTH_LONG).show()
+            // END PERBAIKAN 2
 
         } else {
             tampilkanKombinasi()
@@ -140,10 +151,11 @@ class AsesmenHuruf2 : AppCompatActivity() {
     private fun calculateSetScore(): Int {
         var correctCheck = 0
         val target = currentTargetLetter.toLowerCase()
+        val checkMark = "✔" // Ditambahkan definisi checkMark
 
         letterTextViews.forEach { tv ->
             val originalLetter = tv.tag?.toString() ?: ""
-            val isChecked = tv.text.toString() == "✔"
+            val isChecked = tv.text.toString() == checkMark // Menggunakan checkMark
 
             if (isChecked) {
                 if (originalLetter == target) {
@@ -152,7 +164,9 @@ class AsesmenHuruf2 : AppCompatActivity() {
                     correctCheck--
                 }
             } else {
+                // Tambahkan pengecekan jika huruf target tidak dicentang (optional: bisa dikurangi 1)
                 if (originalLetter == target) {
+                    // correctCheck--
                 }
             }
         }
